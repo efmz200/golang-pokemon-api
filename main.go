@@ -28,14 +28,11 @@ func handleRequests() {
 }
 
 func addPokemon(w http.ResponseWriter, r *http.Request){
-	var newPokemon database.Pokemon
+	var newPuchamon database.Pokemon
 	reqBody, _:= ioutil.ReadAll(r.Body)
-	json.Unmarshal(reqBody, &newPokemon)
-	//if _, ok := database.PokemonDb[nuevoPokemon.ID]; ok{
-	//	w.WriteHeader(http.StatusNotModified)
-	//	return
-	//}
-	database.PokemonDb[3]=newPokemon
+	json.Unmarshal(reqBody, &newPuchamon)
+
+	database.PokemonDb=append(database.PokemonDb,newPuchamon)
 	w.WriteHeader(http.StatusOK)
 
 }
